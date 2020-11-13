@@ -2,8 +2,7 @@
 SRC     = $(wildcard *.cpp)
 OBJ 		= $(SRC:.cpp=.o)
 EXE 		= $(SRC:.cpp=)
-LDFLAGS		=  -L/usr/local/lib -lglfw -pthread -lGLEW -lGLU -lGL -lrt -lXrandr -lXxf86vm -lX11
-#
+LDFLAGS 		= -L./algorithm -lglut -lGL -lGLU -lGLEW
 # set up extra flags for explicitly setting mode
 debug:      CFLAGS    += -g -O0
 release:    CFLAGS    += -O0
