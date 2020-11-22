@@ -27,17 +27,24 @@ public:
     cEvent    : pointer to the event, when the arch disappears (circle event)
     parent    : pointer to the parent node in tree
   */
-  bool       isLeaf;
-  VPoint*    site;
-  VEdge*     edge;
-  VEvent*    cEvent;
-  VParabola* parent;
+  VPoint<double>*   site;
+  bool              isLeaf;
+  VEdge*            edge;
+  VEvent*           cEvent;
+  VParabola*        parent;
 
   /*
     Constructors (empty for edge, with focus parameter for an arch).
   */
+  VParabola  (VPoint<double>* s)
+{
+  site    = s;
+  isLeaf  = true;
+  cEvent  = nullptr;
+  edge    = nullptr;
+  parent  = nullptr;
+}
   VParabola  ();
-  VParabola  (VPoint* s);
 
   /*
     Access to the children (in tree).

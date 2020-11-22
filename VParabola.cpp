@@ -3,21 +3,21 @@
 
 VParabola::VParabola()
 {
-  site    = 0;
   isLeaf  = false;
+  // site    = 0;
   cEvent  = 0;
   edge    = 0;
   parent  = 0;
 }
 
-VParabola::VParabola(VPoint* s)
-{
-  site    = s; 
-  isLeaf  = true;
-  cEvent  = 0;
-  edge    = 0;
-  parent  = 0;
-}
+// VParabola::VParabola(VPoint<double>* s)
+// {
+//   site    = s;
+//   isLeaf  = true;
+//   cEvent  = 0;
+//   edge    = 0;
+//   parent  = 0;
+// }
 
 VParabola* VParabola::GetLeft(VParabola* p)
 {
@@ -37,9 +37,9 @@ VParabola* VParabola::GetLeftParent(VParabola* p)
 
   while(par->Left() == pLast) 
   { 
-    if (!par->parent) return 0;
+    if (!par->parent) return nullptr;
     pLast = par; 
-    par = par->parent; 
+    par   = par->parent;
   }
   return par;
 }
@@ -50,16 +50,16 @@ VParabola* VParabola::GetRightParent(VParabola* p)
   VParabola* pLast  = p;
   while (par->Right() == pLast) 
   { 
-    if (!par->parent) return 0;
+    if (!par->parent) return nullptr;
     pLast = par;
-    par  = par->parent; 
+    par   = par->parent;
   }
   return par;
 }
 
 VParabola* VParabola::GetLeftChild(VParabola* p)
 {
-  if (!p) return 0;
+  if (!p) return nullptr;
   VParabola* par = p->Left();
   while (!par->isLeaf) par = par->Right();
   return par;
@@ -67,8 +67,8 @@ VParabola* VParabola::GetLeftChild(VParabola* p)
 
 VParabola* VParabola::GetRightChild  (VParabola* p)
 {
-  if (!p) return 0;
-  VParabola* par = p->Right();
+  if (!p) return nullptr;
+  VParabola* par           = p->Right();
   while (!par->isLeaf) par = par->Left();
   return par;
 }

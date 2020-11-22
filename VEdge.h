@@ -22,11 +22,11 @@ class VEdge
 {
 public:
 
-  VPoint*  start;
-  VPoint*  end;
-  VPoint*  direction;
-  VPoint*  left;
-  VPoint*  right;
+  VPoint<double>*  start;
+  VPoint<double>*  end;
+  VPoint<double>*  direction;
+  VPoint<double>*  left;
+  VPoint<double>*  right;
 
   double   a;
   double   b;
@@ -40,17 +40,17 @@ public:
     a    : pointer to left place
     b    : pointer to right place
   */
-  VEdge(VPoint* s, VPoint* l, VPoint* r)
+  VEdge(VPoint<double>* s, VPoint<double>* l, VPoint<double>* r)
   {
     start      = s;
-    end        = 0;
+    end        = nullptr;
     left       = l;
     right      = r;
-    neighbour  = 0;
+    neighbour  = nullptr;
 
     a = (r->x - l->x) / (l->y - r->y) ;
     b = s->y - a * s->x ;
-    direction = new VPoint(r->y - l->y, -(r->x - l->x));
+    direction = new VPoint<double>(r->y - l->y, -(r->x - l->x));
   }
 
   /*

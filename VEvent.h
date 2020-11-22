@@ -16,7 +16,7 @@
 class VEvent
 {
 public:
-  VPoint*     point;
+  VPoint<double>*     point;
   bool        is_place_event;
   double      y;
   VParabola*  arch;
@@ -25,12 +25,12 @@ public:
     point_             : point, at which the event occurs
     is_place_event_    : whether it is a place event or not
   */
-  VEvent(VPoint* point_, bool is_place_event_)
+  VEvent(VPoint<double>* point_, bool is_place_event_)
   {
     point           = point_;
     is_place_event  = is_place_event_;
     y               = point->y;
-    arch            = 0;
+    arch            = nullptr;
   }
 
   /*

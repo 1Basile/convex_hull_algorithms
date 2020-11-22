@@ -17,8 +17,8 @@ namespace vor
   /*
     Useful data containers for Vertices (places) and Edges of Voronoi diagram
   */
-  typedef std::list<VPoint*>  Vertices;
-  typedef std::list<VEdge*>   Edges;
+  typedef std::list<VPoint<double>*>  Vertices;
+  typedef std::list<VEdge*>           Edges;
 
   /*
     Class for generating the Voronoi diagram
@@ -37,7 +37,7 @@ namespace vor
 
         output:
           pointer to list of edges
-        
+
         All the data structures are managed by this class
       */
       Edges* get_edges(Vertices*, int, int);
@@ -62,8 +62,8 @@ namespace vor
               points     : list of all new points that were created during the algorithm
               queue      : priority queue with events to process
       */
-      std::set<VEvent*>  deleted;
-      std::list<VPoint*> points;
+      std::set<VEvent*>          deleted;
+      std::list<VPoint<double>*> points;
       std::priority_queue<VEvent*, std::vector<VEvent*>, VEvent::CompareEvent> queue;
 
       /*
@@ -75,14 +75,14 @@ namespace vor
               check_circle       : checks the circle event (disappearing) of this parabola
               GetEdgeInterse
       */
-      void        insert_parabola(VPoint*);
-      void        remove_parabola(VEvent*);
-      void        finish_edge(VParabola*);
-      double      get_x_of_egde(VParabola*, double);
-      VParabola*  get_parabola_by_x(double);
-      double      get_y_of_point(VPoint*, double);
-      void        check_circle(VParabola*);
-      VPoint*     get_edge_intersection(VEdge*, VEdge*);
+      void                insert_parabola(VPoint<double>*);
+      void                remove_parabola(VEvent*);
+      void                finish_edge(VParabola*);
+      double              get_x_of_egde(VParabola*, double);
+      VParabola*          get_parabola_by_x(double);
+      double              get_y_of_point(VPoint<double>*, double);
+      void                check_circle(VParabola*);
+      VPoint<double>*     get_edge_intersection(VEdge*, VEdge*);
   };
 }
 
